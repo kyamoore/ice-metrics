@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICE//METRICS — Advanced Analytics Methodology & Glossary</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- STICKY HEADER & NAVIGATION -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo">
+                <span class="logo-text">ICE<span class="accent-blue">//</span>METRICS</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="players.html" class="nav-link">Players</a></li>
+                    <li><a href="teams.html" class="nav-link">Teams</a></li>
+                    <li><a href="compare.html" class="nav-link">Compare</a></li>
+                    <li><a href="analytics.html" class="nav-link active">Analytics</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION 1: DEEP-DIVE ANALYTICS METHODOLOGY -->
+        <section class="section-container">
+            <h1 class="section-title">Analytics & Modeling Methodology</h1>
+            <p class="section-subtitle">How ICE//METRICS evaluates player performance, shot danger, and expected goal probabilities</p>
+
+            <!-- METHODOLOGY CARD 1: EXPECTED GOALS MODEL -->
+            <div class="card-panel" style="margin-bottom: 2rem;">
+                <h2 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.6rem; text-transform: uppercase;">1. Expected Goals (xG) Shot Evaluation Model</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.2rem;">
+                    The Expected Goals (xG) model assigns a probability value (ranging from 0.00 to 1.00) to every unblocked shot attempt based on historical likelihood of becoming a goal. Rather than treating all shots equally, our model isolates spatial coordinate data and game context factors:
+                </p>
+                <ul style="color: var(--text-primary); line-height: 1.8; margin-left: 1.5rem; margin-bottom: 1.2rem; font-size: 0.95rem;">
+                    <li><strong>Shot Distance & Angle:</strong> Euclidean distance to the center of the net and the acute angle off the goal line.</li>
+                    <li><strong>Shot Type & Event Sequence:</strong> Distinguishes high-probability shot types (slap shots, wrist shots, tip-ins, deflection, snap shots, backhands) and pre-shot speed/rebound tracking.</li>
+                    <li><strong>Game State Context:</strong> Adjusts probabilities based on strength state (5v5, 5v4 power play, 4v5 shorthanded) and score differential.</li>
+                </ul>
+                <div style="background-color: var(--bg-main); padding: 1.2rem; border-radius: 4px; border: 1px solid var(--border-color); border-left: 4px solid var(--accent-blue);">
+                    <strong style="color: var(--text-primary); display: block; margin-bottom: 0.3rem;">On-Ice xG Share Formula:</strong>
+                    <code style="color: var(--accent-blue); font-family: monospace; font-size: 0.95rem;">xGF% = [ xGF / (xGF + xGA) ] × 100</code>
+                    <p style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.4rem;">Where <em>xGF</em> = Expected Goals For while on ice, and <em>xGA</em> = Expected Goals Allowed.</p>
+                </div>
+            </div>
+
+            <!-- METHODOLOGY CARD 2: SHOT DANGER ZONES & HDCF% -->
+            <div class="card-panel" style="margin-bottom: 2rem;">
+                <h2 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.6rem; text-transform: uppercase;">2. Shot Danger Zone Classification (HDCF%)</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.2rem;">
+                    To evaluate territorial quality, shot attempts are categorized into three spatial danger tiers based on slot proximity and rebound likelihood:
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.2rem;">
+                    <div style="background: var(--bg-main); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color); border-top: 3px solid var(--accent-red);">
+                        <strong style="color: var(--accent-red); display: block; margin-bottom: 0.3rem;">High Danger (HD)</strong>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Inner slot and crease area (shots within ~10–15 ft and crease rebounds). Historical Conversion: <strong>>15%</strong></p>
+                    </div>
+                    <div style="background: var(--bg-main); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color); border-top: 3px solid var(--accent-blue);">
+                        <strong style="color: var(--accent-blue); display: block; margin-bottom: 0.3rem;">Medium Danger (MD)</strong>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Outer slot and high-slot perimeter up to the faceoff dots. Historical Conversion: <strong>~6–12%</strong></p>
+                    </div>
+                    <div style="background: var(--bg-main); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color); border-top: 3px solid var(--text-secondary);">
+                        <strong style="color: var(--text-secondary); display: block; margin-bottom: 0.3rem;">Low Danger (LD)</strong>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary);">Point shots near the blueline and acute perimeter angles. Historical Conversion: <strong><3%</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- METHODOLOGY CARD 3: REGRESSION & CONTEXTUAL ADJUSTMENTS -->
+            <div class="card-panel" style="margin-bottom: 2rem;">
+                <h2 style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 0.6rem; text-transform: uppercase;">3. PDO Regression & Contextual Score Effects</h2>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                    Raw statistics can be distorted by luck or tactical score effects (e.g., teams trailing late take more aggressive shot risks). ICE//METRICS applies two fundamental adjustments:
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                    <div style="background: var(--bg-main); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                        <strong style="color: var(--text-primary); display: block; margin-bottom: 0.4rem;">PDO / Luck Normalization</strong>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                            Calculated as $\text{On-Ice Shooting \%} + \text{On-Ice Save \%}$. Over 82 games, team PDO regresses toward <strong>100.0</strong>. A PDO above 102.5 signals unsustainable shooting luck, while a PDO below 97.5 indicates negative variance.
+                        </p>
+                    </div>
+                    <div style="background: var(--bg-main); padding: 1rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                        <strong style="color: var(--text-primary); display: block; margin-bottom: 0.4rem;">Score & Venue Adjustments</strong>
+                        <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+                            Shot attempt data is weighted based on score differential (e.g., shot attempts while trailing are downweighted slightly to account for artificial possession volume generated during trailing push states).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: NHL STRUCTURE & DIVISIONS -->
+        <section class="section-container">
+            <h2 class="section-title">NHL League Structure & Divisions</h2>
+            <p class="section-subtitle">Breakdown of the 32 National Hockey League franchises across 2 Conferences and 4 Divisions</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+                <!-- Atlantic Division -->
+                <div class="card-panel" style="border-top: 3px solid var(--accent-blue);">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--accent-blue); text-transform: uppercase;">Atlantic Division</h3>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Eastern Conference</p>
+                    <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8; color: var(--text-primary);">
+                        <li>• Boston Bruins</li>
+                        <li>• Buffalo Sabres</li>
+                        <li>• Detroit Red Wings</li>
+                        <li>• Florida Panthers</li>
+                        <li>• Montreal Canadiens</li>
+                        <li>• Ottawa Senators</li>
+                        <li>• Tampa Bay Lightning</li>
+                        <li>• Toronto Maple Leafs</li>
+                    </ul>
+                </div>
+
+                <!-- Metropolitan Division -->
+                <div class="card-panel" style="border-top: 3px solid var(--accent-blue);">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--accent-blue); text-transform: uppercase;">Metropolitan Division</h3>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Eastern Conference</p>
+                    <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8; color: var(--text-primary);">
+                        <li>• Carolina Hurricanes</li>
+                        <li>• Columbus Blue Jackets</li>
+                        <li>• New Jersey Devils</li>
+                        <li>• New York Islanders</li>
+                        <li>• New York Rangers</li>
+                        <li>• Philadelphia Flyers</li>
+                        <li>• Pittsburgh Penguins</li>
+                        <li>• Washington Capitals</li>
+                    </ul>
+                </div>
+
+                <!-- Central Division -->
+                <div class="card-panel" style="border-top: 3px solid var(--accent-red);">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--accent-red); text-transform: uppercase;">Central Division</h3>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Western Conference</p>
+                    <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8; color: var(--text-primary);">
+                        <li>• Chicago Blackhawks</li>
+                        <li>• Colorado Avalanche</li>
+                        <li>• Dallas Stars</li>
+                        <li>• Minnesota Wild</li>
+                        <li>• Nashville Predators</li>
+                        <li>• St. Louis Blues</li>
+                        <li>• Utah Mammoth</li>
+                        <li>• Winnipeg Jets</li>
+                    </ul>
+                </div>
+
+                <!-- Pacific Division -->
+                <div class="card-panel" style="border-top: 3px solid var(--accent-red);">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; color: var(--accent-red); text-transform: uppercase;">Pacific Division</h3>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.8rem;">Western Conference</p>
+                    <ul style="list-style: none; font-size: 0.9rem; line-height: 1.8; color: var(--text-primary);">
+                        <li>• Anaheim Ducks</li>
+                        <li>• Calgary Flames</li>
+                        <li>• Edmonton Oilers</li>
+                        <li>• Los Angeles Kings</li>
+                        <li>• San Jose Sharks</li>
+                        <li>• Seattle Kraken</li>
+                        <li>• Vancouver Canucks</li>
+                        <li>• Vegas Golden Knights</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: REGULAR SEASON & PLAYOFF FORMAT -->
+        <section class="section-container">
+            <h2 class="section-title">Season & Playoff Architecture</h2>
+            <p class="section-subtitle">How a standard NHL season and Stanley Cup Playoff tournament operate</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+                <div class="card-panel">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; text-transform: uppercase;">The 82-Game Regular Season</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                        Runs from October through mid-April. Teams earn <strong>2 points for a win</strong> (regulation, overtime, or shootout), <strong>1 point for an overtime/shootout loss (OTL)</strong>, and <strong>0 points for a regulation loss</strong>.
+                    </p>
+                </div>
+
+                <div class="card-panel">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; margin-bottom: 0.5rem; text-transform: uppercase;">The 16-Team Stanley Cup Playoffs</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                        The top 3 teams in each division (12 teams) plus 2 Wild Card teams per conference (4 teams) advance to the postseason. Four rounds are played as best-of-7 series to decide the Stanley Cup champion.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: STATISTICAL DEFINITIONS GLOSSARY -->
+        <section class="section-container">
+            <h2 class="section-title">Statistical Definitions Glossary</h2>
+            <p class="section-subtitle">Explanations of traditional and advanced metrics used across ICE//METRICS</p>
+
+            <div class="card-panel" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                <div>
+                    <h3 style="color: var(--accent-blue); font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800;">GP (Games Played) & G / A / PTS</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                        <strong>G (Goals):</strong> Total pucks shot directly into the opponent's net.<br>
+                        <strong>A (Assists):</strong> Passes directly leading to a teammate's goal (up to 2 per goal).<br>
+                        <strong>PTS (Points):</strong> Total Goals + Assists combined.
+                    </p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color);">
+
+                <div>
+                    <h3 style="color: var(--accent-blue); font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800;">P/GP (Points Per Game)</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                        Calculated as $\text{PTS} / \text{GP}$. Normalizes scoring output to evaluate player scoring pace independently of games missed due to injury or rest.
+                    </p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color);">
+
+                <div>
+                    <h3 style="color: var(--accent-blue); font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800;">Sh% (Shooting Percentage)</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                        The percentage of on-target shots on goal that result in goals ($\text{Goals} / \text{Shots on Goal} \times 100$). League average is roughly 9.5%–10.5%.
+                    </p>
+                </div>
+
+                <hr style="border: 0; border-top: 1px solid var(--border-color);">
+
+                <div>
+                    <h3 style="color: var(--accent-blue); font-family: var(--font-heading); font-size: 1.3rem; font-weight: 800;">Corsi For (CF%) & Fenwick For (FF%)</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                        <strong>Corsi (CF%):</strong> On-ice total shot attempt differential (Shots + Misses + Blocked Shots).<br>
+                        <strong>Fenwick (FF%):</strong> On-ice unblocked shot attempt differential (Shots + Misses).
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-text">ICE<span class="accent-blue">//</span>METRICS</span>
+                <p class="tagline">See Beyond the Scoreboard.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="players.html">Players</a></li>
+                    <li><a href="teams.html">Teams</a></li>
+                    <li><a href="compare.html">Compare</a></li>
+                    <li><a href="analytics.html">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-credits">
+                <h4>Data Attribution</h4>
+                <p>Official NHL.com records for the 2025–26 regular season.</p>
+                <p class="copyright">&copy; 2026 ICE//METRICS.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
