@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICE//METRICS — Team Standings & Special Teams</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Shared CSS Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- STICKY HEADER & NAVIGATION -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="brand-logo">
+                <span class="logo-text">ICE<span class="accent-blue">//</span>METRICS</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="players.html" class="nav-link">Players</a></li>
+                    <li><a href="teams.html" class="nav-link active">Teams</a></li>
+                    <li><a href="compare.html" class="nav-link">Compare</a></li>
+                    <li><a href="analytics.html" class="nav-link">Analytics</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- NHL TEAM STANDINGS TABLE -->
+        <section class="section-container">
+            <h1 class="section-title">NHL Team Standings</h1>
+            <p class="section-subtitle">2025–26 Regular Season Standings & Goal Differentials</p>
+
+            <div class="table-wrapper">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team Name</th>
+                            <th>GP</th>
+                            <th>W</th>
+                            <th>L</th>
+                            <th>OTL</th>
+                            <th>PTS</th>
+                            <th>DIFF</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="rank-cell">01</td>
+                            <td class="player-cell"><strong>Colorado Avalanche</strong></td>
+                            <td>82</td>
+                            <td>55</td>
+                            <td>16</td>
+                            <td>11</td>
+                            <td class="highlight-cell">121</td>
+                            <td style="color: #4ade80; font-weight: 700;">+99</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">02</td>
+                            <td class="player-cell"><strong>Carolina Hurricanes</strong></td>
+                            <td>82</td>
+                            <td>53</td>
+                            <td>22</td>
+                            <td>7</td>
+                            <td class="highlight-cell">113</td>
+                            <td style="color: #4ade80; font-weight: 700;">+56</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">03</td>
+                            <td class="player-cell"><strong>Dallas Stars</strong></td>
+                            <td>82</td>
+                            <td>50</td>
+                            <td>20</td>
+                            <td>7</td>
+                            <td class="highlight-cell">112</td>
+                            <td style="color: #4ade80; font-weight: 700;">+53</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">04</td>
+                            <td class="player-cell"><strong>Buffalo Sabres</strong></td>
+                            <td>82</td>
+                            <td>50</td>
+                            <td>23</td>
+                            <td>9</td>
+                            <td class="highlight-cell">109</td>
+                            <td style="color: #4ade80; font-weight: 700;">+47</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">05</td>
+                            <td class="player-cell"><strong>Tampa Bay Lightning</strong></td>
+                            <td>82</td>
+                            <td>50</td>
+                            <td>26</td>
+                            <td>6</td>
+                            <td class="highlight-cell">106</td>
+                            <td style="color: #4ade80; font-weight: 700;">+59</td>
+                        </tr>
+                        <tr>
+                            <td class="rank-cell">05</td>
+                            <td class="player-cell"><strong>Montreal Canadiens</strong></td>
+                            <td>82</td>
+                            <td>48</td>
+                            <td>24</td>
+                            <td>10</td>
+                            <td class="highlight-cell">106</td>
+                            <td style="color: #4ade80; font-weight: 700;">+27</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SPECIAL TEAMS VISUALIZATIONS -->
+        <section class="section-container">
+            <h2 class="section-title">Special Teams Breakdown</h2>
+            <p class="section-subtitle">Power-Play (PP%) and Penalty-Kill (PK%) Efficiency Rankings</p>
+
+            <div class="stats-grid">
+                <!-- Power Play Card -->
+                <div class="card-panel">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase;">Power-Play Percentage (PP%)</h3>
+
+                    <div class="trend-item">
+                        <div class="trend-info">
+                            <span>Edmonton Oilers</span>
+                            <span class="trend-value">30.6%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill fill-blue" style="width: 30.6%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-info">
+                            <span>Dallas Stars</span>
+                            <span class="trend-value">28.6%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill fill-blue" style="width: 28.6%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-info">
+                            <span>Minnesota Wild</span>
+                            <span class="trend-value">25.2%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill fill-blue" style="width: 25.2%;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Penalty Kill Card -->
+                <div class="card-panel">
+                    <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase;">Penalty-Kill Percentage (PK%)</h3>
+
+                    <div class="trend-item">
+                        <div class="trend-info">
+                            <span>Colorado Avalanche</span>
+                            <span class="trend-value" style="color: var(--accent-red);">84.6%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill fill-red" style="width: 84.6%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-info">
+                            <span>Chicago Blackhawks</span>
+                            <span class="trend-value" style="color: var(--accent-red);">83.6%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill fill-red" style="width: 83.6%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="trend-item">
+                        <div class="trend-info">
+                            <span>Tampa Bay Lightning</span>
+                            <span class="trend-value" style="color: var(--accent-red);">82.6%</span>
+                        </div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar-fill fill-red" style="width: 82.6%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-text">ICE<span class="accent-blue">//</span>METRICS</span>
+                <p class="tagline">See Beyond the Scoreboard.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Dashboard</a></li>
+                    <li><a href="players.html">Players</a></li>
+                    <li><a href="teams.html">Teams</a></li>
+                    <li><a href="compare.html">Compare</a></li>
+                    <li><a href="analytics.html">Analytics</a></li>
+                </ul>
+            </div>
+            <div class="footer-credits">
+                <h4>Data Attribution</h4>
+                <p>Official NHL.com records for the 2025–26 regular season.</p>
+                <p class="copyright">&copy; 2026 ICE//METRICS.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
