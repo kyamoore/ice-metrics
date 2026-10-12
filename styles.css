@@ -1,0 +1,611 @@
+/* 1. GLOBAL STYLES, VARIABLES & SMOOTH SCROLLING */
+/* Enable Smooth Anchor Scrolling Across Entire Document */
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    /*Color Palette */
+    --bg-main: #080C12;        /* Main Background */
+    --bg-card: #121B27;        /* Cards and Panels */
+    --bg-hover: #1B2938;        /* Hover Backgrounds */
+    --accent-blue: #63D8FF;        /* Ice Blue Accent */
+    --accent-red: #FF5364;        /* Power Red Accent */
+    --text-primary: #FFFFFF;        /* Primary Text */
+    --text-secondary: #9EADBE;        /* Secondary Text */
+    --border-color: #263341;        /* Subtle Borders */
+    
+    /* Typography */
+    --font-heading: 'Barlow Condensed', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Accessible Focus States for Keyboard Navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 4px;
+    box-shadow: 0 0 10px rgba(99, 216, 255, 0.5);
+}
+
+/* Standard Hyperlink Styles */
+a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover{
+    color: #FFFFFF;
+}
+
+/* Content Container Layout */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-primary);
+}
+
+.section-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+}
+
+/* Panel Card Container */
+.card-panel {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* 2. STICKY HEADER & ANIMATED NAVIGATION BAR */
+.site-header {
+    background-color: rgba(18, 27, 39, 0.95);
+    backdrop-filter: blue(8px);
+    border-bottom: 1px solid var(--border-color);
+    
+    /* Sticky Header Properties */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    
+    /* Subtle Box Shadow */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    letter-spacing: 1.5px;
+    display: flex;
+    align-items: center;
+}
+
+.accent-blue {
+    color: var(--accent-blue);
+    text-shadow: 0 0 10px rgba(99, 216, 255, 0.4);
+}
+
+.main-nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+/* Animated Nav Links with Underline Transition */
+.nav-link {
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 0.4rem 0;
+    position: relative;
+    transition: color 0.25s ease;
+}
+
+/* Animated Underline Effect using ::after Pseudoelement */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--accent-blue);
+    box-shadow: 0 0 8px var(--accent-blue);
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.nav-link.active {
+    color: var(--accent-blue);
+}
+
+
+/* ==========================================================================
+   3. HERO SECTION (WITH ICE-RINK VISUAL PATTERN)
+   ========================================================================== */
+
+.hero-section {
+    position: relative;
+    background: linear-gradient(180deg, #121B27 0%, #080C12 100%);
+    border-bottom: 1px solid var(--border-color);
+    padding: 5.5rem 1.5rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Subtle Ice-Rink Red/Blue Line Background Overlay */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1000px;
+    height: 100%;
+    background: 
+        radial-gradient(circle, rgba(99, 216, 255, 0.05) 0%, transparent 60%),
+        linear-gradient(90deg, transparent 49.5%, rgba(255, 83, 100, 0.15) 50%, transparent 50.5%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.hero-tagline {
+    color: var(--accent-blue);
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+    display: block;
+    margin-bottom: 0.6rem;
+    text-shadow: 0 0 12px rgba(99, 216, 255, 0.3);
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 4rem;
+    line-height: 1.05;
+    font-weight: 900;
+    margin-bottom: 1.2rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.hero-description {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    margin-bottom: 2.2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+}
+
+/* Button Component Styles */
+.btn {
+    display: inline-block;
+    padding: 0.85rem 1.8rem;
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: all 0.25s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    color: #080C12;
+    box-shadow: 0 0 15px rgba(99, 216, 255, 0.25);
+}
+
+.btn-primary:hover {
+    background-color: #8ce3ff;
+    color: #080C12;
+    box-shadow: 0 0 25px rgba(99, 216, 255, 0.45);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-hover);
+    border-color: var(--accent-blue);
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================================================
+   4. STATISTICAL OVERVIEW CARDS (GRID)
+   ========================================================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.stat-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 1.8rem;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card:hover {
+    border-color: var(--accent-blue);
+    background-color: var(--bg-hover);
+    box-shadow: 0 6px 20px rgba(99, 216, 255, 0.15);
+    transform: translateY(-3px);
+}
+
+.stat-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-number {
+    font-family: var(--font-heading);
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--accent-blue);
+    line-height: 1.1;
+    margin: 0.4rem 0;
+    text-shadow: 0 0 10px rgba(99, 216, 255, 0.2);
+}
+
+.stat-detail {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+
+/* ==========================================================================
+   5. DATA TABLE STYLING
+   ========================================================================== */
+
+.section-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 0.5rem;
+}
+
+.view-all-link {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 1.8rem;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.data-table th, 
+.data-table td {
+    padding: 1.1rem 1.2rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.data-table th {
+    background-color: #0d141e;
+    color: var(--text-secondary);
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.data-table tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.015);
+}
+
+.data-table tbody tr:hover {
+    background-color: var(--bg-hover);
+}
+
+.rank-cell {
+    color: var(--text-secondary);
+    font-weight: 700;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+}
+
+.player-cell {
+    color: var(--text-primary);
+}
+
+.highlight-cell {
+    color: var(--accent-blue);
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+
+
+/* ==========================================================================
+   6. CSS PROGRESS BARS & CHARTS
+   ========================================================================== */
+
+.trend-item {
+    margin-bottom: 1.4rem;
+}
+
+.trend-item:last-child {
+    margin-bottom: 0;
+}
+
+.trend-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.trend-value {
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.progress-bar-container {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    height: 16px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.6s ease;
+}
+
+.fill-blue {
+    background: linear-gradient(90deg, #1B2938 0%, var(--accent-blue) 100%);
+}
+
+.fill-red {
+    background: linear-gradient(90deg, #1B2938 0%, var(--accent-red) 100%);
+}
+
+.fill-slate {
+    background-color: var(--text-secondary);
+}
+
+/* Horizontal Bar Chart Component */
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.chart-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.chart-label {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.chart-bar-wrapper {
+    background-color: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    height: 32px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.chart-bar {
+    background: linear-gradient(90deg, #1B2938 0%, var(--accent-blue) 100%);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 0.8rem;
+    border-radius: 4px;
+    transition: width 0.6s ease;
+}
+
+.chart-value {
+    color: #080C12;
+    font-weight: 900;
+    font-size: 0.85rem;
+}
+
+
+/* ==========================================================================
+   7. FOOTER STYLING
+   ========================================================================== */
+
+.site-footer {
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    margin-top: 5rem;
+    padding: 3.5rem 1.5rem 2rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2.5rem;
+}
+
+.tagline {
+    color: var(--accent-blue);
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-top: 0.2rem;
+}
+
+.footer-brand p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+}
+
+.footer-links h4, 
+.footer-credits h4 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-links a:hover {
+    color: var(--accent-blue);
+}
+
+.footer-credits p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 0.6rem;
+}
+
+.copyright {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+
+/* ==========================================================================
+   8. MEDIA QUERIES (RESPONSIVE MOBILE & TABLET DESIGN)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 0.8rem;
+        text-align: center;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem 1.2rem;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .section-header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
