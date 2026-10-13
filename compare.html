@@ -12,42 +12,10 @@
     
     <!-- Shared CSS Stylesheet -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- PURE CSS TAB LOGIC STYLES -->
-    <style>
-        /* Hide all comparison containers by default */
-        .matchup-content {
-            display: none;
-        }
-        
-        /* When radio button #match2 is checked, show matchup 2 */
-        #tab-m2:checked ~ .matchup-container #content-m2 {
-            display: grid;
-        }
-        
-        /* When radio button #match1 is checked (or default), show matchup 1 */
-        #tab-m1:checked ~ .matchup-container #content-m1 {
-            display: grid;
-        }
-
-        /* Red & Blue Glow Hover Effects */
-        .card-panel, .stat-card {
-            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-        .card-panel:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
-        }
-        .beta-card:hover {
-            border-color: var(--accent-red) !important;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.2) !important;
-        }
-    </style>
 </head>
 <body>
 
-    <!-- STICKY HEADER & NAVIGATION[cite: 1] -->
+    <!-- STICKY HEADER & NAVIGATION -->
     <header class="site-header">
         <div class="header-container">
             <a href="index.html" class="brand-logo">
@@ -69,137 +37,164 @@
         <!-- HEAD-TO-HEAD COMPARISON LAYOUT -->
         <section class="section-container">
             <h1 class="section-title">Top 10 Skater Comparison</h1>
-            <p class="section-subtitle">Select a head-to-head matchup below to compare 2025–26 regular season skater metrics</p>
+            <p class="section-subtitle">Select any two players from the Top 10 scoring leaders to compare statistical profiles</p>
 
-            <!-- HIDDEN RADIO INPUTS FOR PURE CSS TABS -->
-            <input type="radio" name="matchup-toggle" id="tab-m1" checked style="display: none;">
-            <input type="radio" name="matchup-toggle" id="tab-m2" style="display: none;">
-
-            <!-- INTERACTIVE SELECTION POOL -->
+            <!-- TOP 10 SELECTABLE PLAYER POOL GRID -->
             <div class="card-panel" style="margin-bottom: 2.5rem;">
-                <h2 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;">Select Active Matchup Pair</h2>
+                <h2 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; margin-bottom: 1rem;">Top 10 Player Selection Pool</h2>
                 
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <label for="tab-m1" style="background-color: var(--bg-main); border: 2px solid var(--accent-blue); padding: 0.8rem 1.2rem; border-radius: 4px; cursor: pointer; font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">
-                        ⚡ Matchup A: C. McDavid vs. N. Kucherov
-                    </label>
-                    <label for="tab-m2" style="background-color: var(--bg-main); border: 2px solid var(--accent-red); padding: 0.8rem 1.2rem; border-radius: 4px; cursor: pointer; font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">
-                        🔥 Matchup B: N. MacKinnon vs. M. Celebrini
-                    </label>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.8rem;">
+                    <!-- Player Option 1 (Selected Alpha) -->
+                    <div style="background-color: var(--bg-hover); border: 2px solid var(--accent-blue); padding: 0.75rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 700; font-size: 0.9rem;">1. C. McDavid</span>
+                        <span style="background-color: var(--accent-blue); color: #080C12; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 2px;">ALPHA</span>
+                    </div>
+
+                    <!-- Player Option 2 (Selected Beta) -->
+                    <div style="background-color: var(--bg-hover); border: 2px solid var(--accent-red); padding: 0.75rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: 700; font-size: 0.9rem;">2. N. Kucherov</span>
+                        <span style="background-color: var(--accent-red); color: #ffffff; font-size: 0.65rem; font-weight: 800; padding: 2px 6px; border-radius: 2px;">BETA</span>
+                    </div>
+
+                    <!-- Player Option 3 -->
+                    <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 4px; color: var(--text-secondary); font-size: 0.9rem;">
+                        3. N. MacKinnon (127 PTS)
+                    </div>
+
+                    <!-- Player Option 4 -->
+                    <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 4px; color: var(--text-secondary); font-size: 0.9rem;">
+                        4. M. Celebrini (115 PTS)
+                    </div>
+
+                    <!-- Player Option 5 -->
+                    <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 4px; color: var(--text-secondary); font-size: 0.9rem;">
+                        5. M. Scheifele (103 PTS)
+                    </div>
+
+                    <!-- Player Option 6 -->
+                    <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 4px; color: var(--text-secondary); font-size: 0.9rem;">
+                        6. N. Suzuki (101 PTS)
+                    </div>
+
+                    <!-- Player Option 7 -->
+                    <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 4px; color: var(--text-secondary); font-size: 0.9rem;">
+                        7. M. Nečas (100 PTS)
+                    </div>
+
+                    <!-- Player Option 8 -->
+                    <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 4px; color: var(--text-secondary); font-size: 0.9rem;">
+                        8. D. Pastrňák (100 PTS)
+                    </div>
+
+                    <!-- Player Option 9 -->
+                    <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 4px; color: var(--text-secondary); font-size: 0.9rem;">
+                        9. L. Draisaitl (97 PTS)
+                    </div>
+
+                    <!-- Player Option 10 -->
+                    <div style="background-color: var(--bg-main); border: 1px solid var(--border-color); padding: 0.75rem; border-radius: 4px; color: var(--text-secondary); font-size: 0.9rem;">
+                        10. J. Robertson (96 PTS)
+                    </div>
                 </div>
             </div>
 
-            <!-- MATCHUP CONTAINER (CONTROLLED BY CSS) -->
-            <div class="matchup-container">
-
-                <!-- ================= MATCHUP 1: MCDAVID vs KUCHEROV ================= -->
-                <div id="content-m1" class="matchup-content" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+            <!-- COMPARISON HEAD-TO-HEAD CARDS -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                
+                <!-- Player Alpha Card -->
+                <div class="card-panel" style="border-top: 4px solid var(--accent-blue);">
+                    <span style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">SKATER ALPHA</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin: 0.2rem 0;">Connor McDavid</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Edmonton Oilers • Center (#97)</p>
                     
-                    <!-- Player Alpha Card -->
-                    <div class="card-panel" style="border-top: 4px solid var(--accent-blue);">
-                        <span style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">SKATER ALPHA</span>
-                        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin: 0.2rem 0;">Connor McDavid</h2>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Edmonton Oilers • Center (#97)</p>
-                        
-                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Games Played (GP)</span><strong>82</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Goals (G)</span><strong style="color: var(--accent-blue);">48</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Assists (A)</span><strong style="color: var(--accent-blue);">90</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Total Points (PTS)</span><strong style="color: var(--accent-blue);">138</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Points Per Game (P/GP)</span><strong>1.68</strong>
-                            </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Games Played (GP)</span>
+                            <strong>82</strong>
                         </div>
-                    </div>
-
-                    <!-- Player Beta Card -->
-                    <div class="card-panel beta-card" style="border-top: 4px solid var(--accent-red);">
-                        <span style="color: var(--accent-red); font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">SKATER BETA</span>
-                        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin: 0.2rem 0;">Nikita Kucherov</h2>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Tampa Bay Lightning • Right Wing (#86)</p>
-                        
-                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Games Played (GP)</span><strong>76</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Goals (G)</span><strong>44</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Assists (A)</span><strong>86</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Total Points (PTS)</span><strong>130</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Points Per Game (P/GP)</span><strong style="color: var(--accent-red);">1.71</strong>
-                            </div>
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Goals (G)</span>
+                            <strong style="color: var(--accent-blue);">48</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Assists (A)</span>
+                            <strong style="color: var(--accent-blue);">90</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Total Points (PTS)</span>
+                            <strong style="color: var(--accent-blue);">138</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Points Per Game (P/GP)</span>
+                            <strong>1.68</strong>
                         </div>
                     </div>
                 </div>
 
-                <!-- ================= MATCHUP 2: MACKINNON vs CELEBRINI ================= -->
-                <div id="content-m2" class="matchup-content" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <!-- Player Beta Card -->
+                <div class="card-panel" style="border-top: 4px solid var(--accent-red);">
+                    <span style="color: var(--accent-red); font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">SKATER BETA</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin: 0.2rem 0;">Nikita Kucherov</h2>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Tampa Bay Lightning • Right Wing (#86)</p>
                     
-                    <!-- Player Alpha Card -->
-                    <div class="card-panel" style="border-top: 4px solid var(--accent-blue);">
-                        <span style="color: var(--accent-blue); font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">SKATER ALPHA</span>
-                        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin: 0.2rem 0;">Nathan MacKinnon</h2>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">Colorado Avalanche • Center (#29)</p>
-                        
-                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Games Played (GP)</span><strong>80</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Goals (G)</span><strong style="color: var(--accent-blue);">53</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Assists (A)</span><strong style="color: var(--accent-blue);">74</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Total Points (PTS)</span><strong style="color: var(--accent-blue);">127</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Points Per Game (P/GP)</span><strong>1.59</strong>
-                            </div>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Games Played (GP)</span>
+                            <strong>76</strong>
                         </div>
-                    </div>
-
-                    <!-- Player Beta Card -->
-                    <div class="card-panel beta-card" style="border-top: 4px solid var(--accent-red);">
-                        <span style="color: var(--accent-red); font-size: 0.8rem; font-weight: 800; text-transform: uppercase;">SKATER BETA</span>
-                        <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; margin: 0.2rem 0;">Macklin Celebrini</h2>
-                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1.5rem;">San Jose Sharks • Center (#71)</p>
-                        
-                        <div style="display: flex; flex-direction: column; gap: 0.8rem;">
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Games Played (GP)</span><strong>82</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Goals (G)</span><strong>45</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Assists (A)</span><strong>70</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Total Points (PTS)</span><strong>115</strong>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
-                                <span>Points Per Game (P/GP)</span><strong style="color: var(--accent-red);">1.40</strong>
-                            </div>
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Goals (G)</span>
+                            <strong>44</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Assists (A)</span>
+                            <strong>86</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Total Points (PTS)</span>
+                            <strong>130</strong>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; background-color: var(--bg-main); padding: 0.8rem; border-radius: 4px; border: 1px solid var(--border-color);">
+                            <span>Points Per Game (P/GP)</span>
+                            <strong style="color: var(--accent-red);">1.71</strong>
                         </div>
                     </div>
                 </div>
 
+            </div>
+
+            <!-- CSS COMPARISON BAR CHARTS -->
+            <div class="card-panel">
+                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800; margin-bottom: 1.2rem; text-transform: uppercase;">Direct Metric Breakdown</h3>
+                
+                <div class="chart-container">
+                    <!-- Points -->
+                    <div class="chart-row">
+                        <div class="chart-label">Total Points: McDavid (138) vs Kucherov (130)</div>
+                        <div class="chart-bar-wrapper" style="display: flex;">
+                            <div style="background-color: var(--accent-blue); width: 51.5%; height: 100%; display: flex; align-items: center; padding-left: 0.8rem; color: #080C12; font-weight: 800; font-size: 0.85rem;">McDavid: 138</div>
+                            <div style="background-color: var(--accent-red); width: 48.5%; height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 0.8rem; color: #ffffff; font-weight: 800; font-size: 0.85rem;">Kucherov: 130</div>
+                        </div>
+                    </div>
+
+                    <!-- Assists -->
+                    <div class="chart-row" style="margin-top: 0.8rem;">
+                        <div class="chart-label">Assists: McDavid (90) vs Kucherov (86)</div>
+                        <div class="chart-bar-wrapper" style="display: flex;">
+                            <div style="background-color: var(--accent-blue); width: 51.1%; height: 100%; display: flex; align-items: center; padding-left: 0.8rem; color: #080C12; font-weight: 800; font-size: 0.85rem;">McDavid: 90</div>
+                            <div style="background-color: var(--accent-red); width: 48.9%; height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 0.8rem; color: #ffffff; font-weight: 800; font-size: 0.85rem;">Kucherov: 86</div>
+                        </div>
+                    </div>
+
+                    <!-- Points Per Game Pace -->
+                    <div class="chart-row" style="margin-top: 0.8rem;">
+                        <div class="chart-label">Points Per Game Pace (P/GP): McDavid (1.68) vs Kucherov (1.71)</div>
+                        <div class="chart-bar-wrapper" style="display: flex;">
+                            <div style="background-color: var(--accent-blue); width: 49.5%; height: 100%; display: flex; align-items: center; padding-left: 0.8rem; color: #080C12; font-weight: 800; font-size: 0.85rem;">McDavid: 1.68</div>
+                            <div style="background-color: var(--accent-red); width: 50.5%; height: 100%; display: flex; align-items: center; justify-content: flex-end; padding-right: 0.8rem; color: #ffffff; font-weight: 800; font-size: 0.85rem;">Kucherov: 1.71</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
